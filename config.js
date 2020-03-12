@@ -1,5 +1,4 @@
-var proot = "http://peasyjet.co.uk/";
-// var proot = "./";
+var proot = "./";
 var sroot = proot;
 
 var mapStyle = [
