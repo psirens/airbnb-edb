@@ -27,26 +27,26 @@
 		<div class='row toprow jusbet'>
 			<div class='col-2'><button id='button_find_me'>Find near me</button></div>
 			<div class='col-3'>
-				<div class='row'><div class='title'>Pins</div></div>
+				<div class='row'><div class='title' title="Viewing method">Pins</div></div>
 				<div class='row'><select name='map_method' id='map_method'><option value='area' selected='selected'>Area click</option><option value='all'>Show all</option><option value='heat'>Heat map</option></select></div>
 				<div class='row hidden' id='weight_map'><label>Weight by rev/month</label><input type='checkbox' id='weight_option' checked='checked' class='search_box'/></div>
-				<div class='row'><label>Cluster</label><input type='checkbox' id='cluster_option' checked='checked' class='search_box'/></div>
+				<div class='row'><label title="Group rooms by area to improve website performance">Cluster</label><input type='checkbox' id='cluster_option' checked='checked' class='search_box'/></div>
 			</div>
 			<div class='col-3'>
-				<div class='row'><div class='title'>Filter</div></div>
+				<div class='row'><div class='title' title="Reduce room selection according to options below">Filter</div></div>
 				<div class='row'><div>
 					<select name='map_type' id='map_type' class='search_box'><option value='entire'>Entire</option><option value='room'>Rooms</option><option value='both'>Both</option></select>
 					</div>
 				</div>
-				<div class='row map_just'><label id="map_results_year">Reviewed 2019+</label><input id='checkbox_lastbooked' type='checkbox' checked='true' class='search_box'/></div>
-				<div class='row map_just'><label id="map_results_avail" title='Available days to book at the time - NOT INCLUDING days already booked by others'>Available 2020+</label><input id='checkbox_available' type='checkbox' checked='true' class='search_box'/></div>
+				<div class='row map_just'><label id="map_results_year" title="Had a review posted in the last year">Reviewed 2019+</label><input id='checkbox_lastbooked' type='checkbox' checked='true' class='search_box'/></div>
+				<div class='row map_just'><label id="map_results_avail" title='Had days available to book at the time'>Available 2020+</label><input id='checkbox_available' type='checkbox' checked='true' class='search_box'/></div>
 				<div class='row map_just'><label id="map_results_fringe" title="Booked last Fringe or Available this Fringe">(Aug/Fringe only)</label><input id='checkbox_available_fringe' type='checkbox' class='search_box'/>
 				<!-- <label id="map_results_fringe">(Fringe)</label><input id='checkbox_booked_fringe' type='checkbox' checked='true' class='search_box'/> -->
 				<!-- ROY<input id='checkbox_available_roy' type='checkbox' checked='true' class='search_box'/> -->
 				</div>
 			</div>
 			<div class='col-4'>
-				<div class='title'>Polyfill</div>
+				<div class='title' title="Colour map areas according to statistics below">Polyfill</div>
 				<select name='map_polyfill' id='map_polyfill'><option value='howmany'>How many</option><option value='entireprice'>Avg home price/nt</option><option value='roomprice'>Avg room price/nt</option><option value='reviews_per_month_entire'>Home rev rate/month</option><option value='reviews_per_month_room'>Room rev rate/month</option></select>
 				<div id="map_color_key"></div>
 			</div>
@@ -100,7 +100,7 @@
 					  </ol>
 					  <div class="carousel-inner">
 						<div class="carousel-item active">
-							<p>This website allows you to visualise and help identify the Airbnb lets near your home. <a href='#' id='ddisc'>Data sourced</a> from <a href='http://insideAirbnb.com/edinburgh/' target='_blank'>insideAirbnb.com</a> (Nov 2019)</p>
+							<p>This website allows you to visualise and help identify the Airbnb lets near your home. <a href='#' id='ddisc'>Data sourced</a> from <a href='http://insideAirbnb.com/edinburgh/' target='_blank'>insideAirbnb.com</a> (Jan 2020)</p>
 							
 							<div class='disclaimer hidden'>
 								<p>*The data is incomplete but can still give an accurate picture of short-term let proliferation. Airbnb make it difficult to identify the location and nature of homes they list for both user privacy and covertness. Exact locations are accurate to 300m. Prices have been averaged over the year, as they vary widely due to demand, date, availability, obscurities (eg. hosts postponing renting by setting high prices). Available days are subject to change as hosts update calendars frequently and can be removed or added after the dataset snapshot was taken. Days available in previous months but no longer could have been booked by guests, the date past unoccupied or simply been removed. Past reviews per month therefore seems the most useful occupancy metric, despite some guests not leaving reviews, but may seem skewed for hosts who only offer rent during Summer months.</p>
@@ -112,7 +112,7 @@
 							
 							<p>The Edinburgh short-term rental market is depriving permanent residents of available housing while causing existing tenants major disturbance and safety concerns, particularly felt in traditional communal stair tenements. Meanwhile long-term letting agents continue to hike prices due to limited supply versus demand, with new-build Student Accommodation increasingly being given permission to plug the housing shortfall.</p>
 							
-							<p>From the map you can see the properties are not restricted to just the Old Town or city center. Some of the most popular residences are situated in Leith and Easter Road to the East, to Tolcross and Murrayfield in the West. In total there were estimated to be over 9000 separate Edinburgh property listings on Airbnb in 2019, with over 500 Entire-home reviews being posted per day on average.</p>
+							<p>From the map you can see the properties are not restricted to just the Old Town or city center. Some of the most popular residences are situated in Leith and Easter Road to the East, to Tolcross and Murrayfield in the West. In total there were estimated to be over 9000 separate Edinburgh property listings on Airbnb in 2019, with around 500 Entire-home reviews being posted each day.</p>
 							
 							<div class='pagenum'>1 of 2</div>
 						</div>
