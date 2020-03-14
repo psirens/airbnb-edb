@@ -52,6 +52,7 @@ class GoogMap {
 		this.heatLayer;
 		this.userPin;
 		this.userCircle;
+		this.cityCircle;
 		this.markers = {};
 		this.context = context;
 	}
@@ -65,6 +66,34 @@ class GoogMap {
 	
 	polyContains = function(poly, lat, lng){
 		return google.maps.geometry.poly.containsLocation( new google.maps.LatLng(lat, lng),poly)
+	}
+	
+	clearCityCircle(){
+		if(this.cityCircle != null){
+			this.cityCircle.setMap(null);
+			this.cityCircle = null;
+		}
+	}
+	
+	moveCityCircle(lat,lng){
+		if(this.cityCircle == null){
+			var loc = new google.maps.LatLng(lat,lng);
+			
+			//Create an accuracy circle
+			this.cityCircle = new google.maps.Circle({
+				strokeColor: '#b8ff5a',
+				strokeOpacity: 0.7,
+				strokeWeight: 3,
+				fillOpacity: 0,
+				clickable:false,
+				map: this.map,
+				center: loc,
+				radius: 250 // meters, "0-450 feet (150 metres)" accurate?
+			});
+		}
+		else{
+			this.cityCircle.setCenter(new google.maps.LatLng(lat,lng));
+		}
 	}
 	
 	userCircleBounds = function(){
@@ -277,6 +306,8 @@ class GoogMap {
 			strokeColor: '#fff',
 			strokeWeight: 2,
 			scale: scale,
+			
+			anchor: new google.maps.Point(7.5/2*scale,7.5/2*scale)
 	   };
 	}
 	
@@ -353,6 +384,8 @@ class GoogMap {
 		
 		this.markers = {};
 		this.clusterLayer = null;
+		
+		this.clearCityCircle();
 	}
 	
 	
