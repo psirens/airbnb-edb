@@ -46,7 +46,7 @@ button{
 	label{
 		min-width:30px;
 	}
-	input{
+	input[type='checkbox']{
 		width:12px; /* 14px */
 	}
 	.scroll{
@@ -62,7 +62,7 @@ button{
 		font-size:12pt;
 		font-weight:500;
 	}
-	input{
+	input[type='checkbox']{
 		width:30px;
 		height:20px;
 		margin:0 10px;
