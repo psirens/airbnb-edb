@@ -52,6 +52,7 @@ class GoogMap {
 		this.heatLayer;
 		this.userPin;
 		this.userCircle;
+		this.cityPin;
 		this.cityCircle;
 		this.markers = {};
 		this.context = context;
@@ -72,13 +73,15 @@ class GoogMap {
 		if(this.cityCircle != null){
 			this.cityCircle.setMap(null);
 			this.cityCircle = null;
+			this.cityPin.setMap(null);
+			this.cityPin = null;
 		}
 	}
 	
 	moveCityCircle(lat,lng){
+		var loc = new google.maps.LatLng(lat,lng);
+		
 		if(this.cityCircle == null){
-			var loc = new google.maps.LatLng(lat,lng);
-			
 			//Create an accuracy circle
 			this.cityCircle = new google.maps.Circle({
 				strokeColor: '#b8ff5a',
@@ -90,9 +93,17 @@ class GoogMap {
 				center: loc,
 				radius: 250 // meters, "0-450 feet (150 metres)" accurate?
 			});
+			var moptions = {
+				map: this.map,
+				position: loc,
+				icon: this.pinSymbol("184,255,90",0.5),
+				zIndex: 101
+			}
+			this.cityPin = new google.maps.Marker(moptions);
 		}
 		else{
 			this.cityCircle.setCenter(new google.maps.LatLng(lat,lng));
+			this.cityPin.setPosition(loc);
 		}
 	}
 	
@@ -140,7 +151,6 @@ class GoogMap {
 			
 			google.maps.event.addListener(this.userPin, 'dragend',
 				function(m, i) {
-					console.log(this);
 					updateUserCircle(this.position);
 				}
 			);
@@ -261,7 +271,6 @@ class GoogMap {
 			// var minRadius = (mobile)? 2 : 1;
 			var minRadius = 0.5;
 			var radius = Math.min((1.5 * scale) + minRadius, 4);
-			// console.log(scale + " " + radius);
 			var moptions = {
 				// id: pid,
 				pid: pid,
@@ -276,10 +285,8 @@ class GoogMap {
 			
 			google.maps.event.addListener(marker, 'click',
 				function(e) {
-					console.log(this);
 					if(this.pid){
 						// this.context.pinClicked(e.target);
-						console.log("pin click");
 						pinClicked(this.pid);
 					}
 				}
@@ -307,7 +314,7 @@ class GoogMap {
 			strokeWeight: 2,
 			scale: scale,
 			
-			anchor: new google.maps.Point(7.5/2*scale,7.5/2*scale)
+			anchor: new google.maps.Point(10 , 10)
 	   };
 	}
 	
@@ -357,8 +364,7 @@ class GoogMap {
 			
 			var svgcol = targetPin._options.icon.split('fill="');
 			// svgcol = svgcol[0] + 'fill="'+ colors[color] + svgcol[1].substring(svgcol[1].indexOf('"')); 
-			svgcol = svgcol[0] + 'fill="{color}'+ svgcol[1].substring(svgcol[1].indexOf('"')); 
-			console.log(svgcol);
+			svgcol = svgcol[0] + 'fill="{color}'+ svgcol[1].substring(svgcol[1].indexOf('"'));
 			targetPin._options.icon = svgcol;
 		}
 		
