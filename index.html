@@ -25,7 +25,7 @@
 <body>
 	<div class='container-fluid'>
 		<div class='row toprow jusbet'>
-			<div class='col-2'><button id='button_find_me'>Find near me</button></div>
+			<div class='col-2'><button id='button_find_me' class='btn-danger'>Find near me</button><button id='button_graphs' class='btn-info'>Airbnb trends</button></div>
 			<div class='col-3'>
 				<div class='row'><div class='title' title="Viewing method">Pins</div></div>
 				<div class='row'><select name='map_method' id='map_method'><option value='area' selected='selected'>Area click</option><option value='all'>Show all</option><option value='heat'>Heat map</option></select></div>
@@ -38,7 +38,7 @@
 					<select name='map_type' id='map_type' class='search_box'><option value='entire'>Entire</option><option value='room'>Rooms</option><option value='both'>Both</option></select>
 					</div>
 				</div>
-				<div class='row map_just'><label id="map_results_year" title="Had a review posted in the last year">Reviewed 2019+</label><input id='checkbox_lastbooked' type='checkbox' checked='true' class='search_box'/></div>
+				<div class='row map_just'><label id="map_results_lyear" title="Had a review posted in the last year" class="mini">Review 2019</label><input id='checkbox_lastbooked' type='checkbox' checked='true' class='search_box'/><label id='map_results_tyear' class="mini">2020</label><input id='checkbox_bookedthis' type='checkbox' class='search_box'/></div>
 				<div class='row map_just'><label id="map_results_avail" title='Had days available to book at the time'>Available 2020+</label><input id='checkbox_available' type='checkbox' checked='true' class='search_box'/></div>
 				<div class='row map_just'><label id="map_results_fringe" title="Booked last Fringe or Available this Fringe">(Aug/Fringe only)</label><input id='checkbox_available_fringe' type='checkbox' class='search_box'/>
 				<!-- <label id="map_results_fringe">(Fringe)</label><input id='checkbox_booked_fringe' type='checkbox' checked='true' class='search_box'/> -->
@@ -60,10 +60,10 @@
 			<div class="row" id='prolific_hosts_content'></div>
 		</div>
 		<div class="row juseven" id='mapoptions'>
-			<div class='col'><button id='button_prolific_hosts'>Prolific hosts</button><div id='results_breadcrumb'>Click map area to show filtered list.</div></div>
+			<div class='col'><button id='button_prolific_hosts' class='btn-warning'>Prolific hosts</button><div id='results_breadcrumb'>Click map area to show filtered list.</div></div>
 			<div class='col-6' id="map_results_hidden"></div>
 			<div class='col' id="map_most_buttons">
-				<div class='row juseven'><div class='title'>Highlight</div><div>Jan 2020 v0.2 <img id='button_info' class='clickable' src='./images/info.png'></div></div>
+				<div class='row juseven'><div class='title'>Highlight</div><div>Jan 2020 v0.3 <img id='button_info' class='clickable' src='./images/info.png'></div></div>
 				<div class='row juseven'>
 					<button id='most_used' class='highlight_orange'>Popular</button>
 					<button id='most_largest' class='highlight_blue'>Large</button>
@@ -78,12 +78,75 @@
 			<div class="col-1" title='Advertised number of beds, typically assumed 2 people per bed'>Beds</div>
 			<div class="col-1" id='heading_price' title='Average price per night, can be variable based on date/demand'>Price</div>
 			<div class="col-1" id='heading_avail' title='Best guess availability, days available at time/days this year which were advertised for rent (note days available will reduce as year progresses naturally)'>Avail days</div>
-			<div class="col-1" title='Total number of reviews posted by previous occupants'>Reviews total</div>
+			<div class="col-1 clickable" id='toggle_review_heading' title='Total number of reviews posted by previous occupants'>Reviews total</div>
 			<div class="col-1" id='heading_reviewrate' title='Reviews per month of operation'>Reviews /month</div>
 			<div class="col-2" id='heading_lastreview' title='Date of most recent review'>Last review</div>
 		</div>
 		<div id='map_details_scroller' class="row scroll">
 			<div id="map_details" class="col-12"></div>
+		</div>
+		<div class="modal" id="graphModal" tabindex="-1" role="dialog" aria-labelledby="graphModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="graphModalLabel">Airbnb in Edinburgh - Trends</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Cancel">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				  <div id="graphCarouselIndicators" class="carousel slide" data-interval="false">
+					  <ol class="carousel-indicators">
+						<li data-target="#graphCarouselIndicators" data-slide-to="0" class="active"></li>
+						<li data-target="#graphCarouselIndicators" data-slide-to="1"></li>
+						<li data-target="#graphCarouselIndicators" data-slide-to="2"></li>
+						<li data-target="#graphCarouselIndicators" data-slide-to="3"></li>
+					  </ol>
+					  <div class="carousel-inner">
+						<div class="carousel-item active">
+							<p>Entire-home Airbnb reviews by month. Not all visitors leave reviews versus a very few spoiled or spam, each review typically corresponds to several people - therefore the number is a low estimate of visitors.</p>
+							<p>The use of Airbnb in Edinburgh during 2020 was expected to grow again, maybe at a slower rate than in previous years. They face increased competition from other STL brokers, lesser supply of new willing owners, and resistance from community groups, though still have plenty of scope to grow further across the city.</p>
+							<p><img class='fullwidth' src='./images/entire_reviews_by_month_per_year.png'/></p>
+							<p><ul class='refs'><li><a href='http://insideairbnb.com/edinburgh/' target='_blank'>[1]insideAirBnB</a></li></ul></p>
+							<div class='pagenum'>1 of 4</div>
+						</div>
+						<div class="carousel-item">
+							<p>Around 145,000 reviews were written for entire-home Airbnbs in Edinburgh 2019, with the number expected to break 150,000 in 2020 (pre-Coronavirus).</p>
+							<p><img class='fullwidth' src='./images/entire_reviews_sum2014-2020.png'/></p>
+							<p><ul class='refs'><li><a href='http://insideairbnb.com/edinburgh/' target='_blank'>[1]insideAirBnB</a></li></ul></p>
+							<div class='pagenum'>2 of 4</div>
+						</div>
+						<div class="carousel-item">
+							<p>There were over 3000 newly listed entire-home Airbnbs in Edinburgh in 2019 (1/3 of which were available for the Fringe only), continuing the upward trend of the past 5 years. Demand for visitor accommodation has never been higher and continues to outstrip the supply of hotel rooms being built.</p>
+							<p>Losses of homes in the capital to Airbnb for tourism can be said to be removing a large chunk of the existing housing stock, thus damaging the government's target of building new housing to meet demand from the next generation of Scots families.</p>
+							<p><img class='fullwidth' src='./images/new_properties_yearonyear.png'/></p>
+							<p class='small'>Dashed lines indicate Airbnbs new in that year but excluding those that since ceased (no reviews in 2019)</p>
+							<p><ul class='refs'><li><a href='http://insideairbnb.com/edinburgh/' target='_blank'>[1]insideAirBnB</a></li><li><a href='https://www.gov.scot/publications/housing-statistics-for-scotland-new-house-building/' target='_blank'>[2]Housing statistics quarterly Mar 2020</a></li><li><a href='https://www.edinburgh.gov.uk/downloads/file/26143/visitor-accommodation' target='_blank'>[3]Edinburgh Council Visitor Accommodation</a></li><li><a href='https://www.bbc.co.uk/news/uk-scotland-scotland-business-51663643' target='_blank'>[4]Colliers Intl Hotel report</a></li></ul></p>
+							<div class='pagenum'>3 of 4</div>
+						</div>
+						<div class="carousel-item">
+							<p>Looking to the future, were entire-home STLs restricted totally, <b>5000 existing properties</b> could be freed for use by long-term residents or students. However it would create a massive shortfall of 15,000 beds for visitors, the peak in Summer, comparable to the entire 2019 capacity of hotels. Hotels of course have a massively higher guest-density achieving that number using <b>97% less properties</b>.</p>
+							<p>With hotel rooms consistently around 80% occupancy for 7 months in the year, urban space for building a dozen new hotels or student halls would have to be found just to meet current peak tourist demand. Far in excess of the estimated 8000 increase in hotel room capacity slated for 2030, with Edinburgh airport expecting 5 million more tourists annually by then. The pressure will be on the Council from both sides in the coming years to provide extra capacity for tourism while cracking down on these antisocial STL businesses.</p>
+							<p><img class='fullwidth' src='./images/visitor_accomodation.png'/></p>
+							<p><ul class='refs'><li><a href='http://insideairbnb.com/edinburgh/' target='_blank'>[1]insideAirBnB</a></li><li><a href='https://www.gov.scot/publications/housing-statistics-for-scotland-new-house-building/' target='_blank'>[2]Housing statistics quarterly Mar 2020</a></li><li><a href='https://www.edinburgh.gov.uk/downloads/file/26143/visitor-accommodation' target='_blank'>[3]GVA/Ryden Hotels report 2019</a></li><li><a href='https://www.bbc.co.uk/news/uk-scotland-scotland-business-51663643' target='_blank'>[4]Colliers Intl Hotel report</a></li><li><a href='https://www.edinburgh.gov.uk/downloads/file/26322/hotel-development-schedule-2018' target='_blank'>[5]City of Edinburgh Hotel Development Schedule 2018</a></li><li><a href='https://rupparti.wordpress.com/2018/03/11/edinburgh-student-accommodation-sources/' target='_blank'>[6]Student accommodation figures</a></li></ul></p>
+							<div class='pagenum'>4 of 4</div>
+						</div>
+					  </div>
+					  <a class="carousel-control-prev" href="#graphCarouselIndicators" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					  </a>
+					  <a class="carousel-control-next" href="#graphCarouselIndicators" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					  </a>
+				</div>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Continue</button>
+			  </div>
+			</div>
+		  </div>
 		</div>
 		<div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
@@ -112,7 +175,7 @@
 							
 							<p>These businesses operate out with the regulations applied to traditional landlords, HMOs or Bed and Breakfasts. With many hosts never even meeting their guests face-to-face they can become removed from the day-to-day issues caused by their rental, and indignant to criticism of what provides them with a very lucrative income.</p>
 							
-							<p>The Edinburgh short-term rental market is depriving permanent residents of available housing while causing existing tenants major disturbance and safety concerns, particularly felt in traditional communal stair tenements. Meanwhile long-term letting agents continue to hike prices due to limited supply versus demand, with new-build Student Accommodation increasingly being given permission to plug the housing shortfall.</p>
+							<p>The Edinburgh short-term rental market is depriving permanent residents of available housing while causing existing tenants major disturbance and safety concerns, particularly felt in traditional communal stair tenements. Meanwhile long-term letting agents continue to hike prices due to limited supply versus demand, with new-build Student Accommodation given permission to plug the housing shortfall.</p>
 							
 							<p>From the map you can see the properties are not restricted to just the Old Town or city center. Some of the most popular residences are situated in Leith and Easter Road to the East, to Tolcross and Murrayfield in the West. In total there were estimated to be over 9000 separate Edinburgh property listings on Airbnb in 2019, with around 500 Entire-home reviews being posted each day.</p>
 							
