@@ -25,7 +25,7 @@
 <body>
 	<div class='container-fluid'>
 		<div class='row toprow jusbet'>
-			<div class='col-2'><button id='button_find_me' class='btn-danger'>Find near me</button><button id='button_graphs' class='btn-info'>Airbnb trends</button></div>
+			<div class='col-2'><button id='button_find_me' class='btn-danger'>Find near me</button><button id='button_graphs' class='btn-info'>Trends</button></div>
 			<div class='col-3'>
 				<div class='row'><div class='title' title="Viewing method">Pins</div></div>
 				<div class='row'><select name='map_method' id='map_method'><option value='area' selected='selected'>Area click</option><option value='all'>Show all</option><option value='heat'>Heat map</option></select></div>
@@ -63,7 +63,7 @@
 			<div class='col'><button id='button_prolific_hosts' class='btn-warning'>Prolific hosts</button><div id='results_breadcrumb'>Click map area to show filtered list.</div></div>
 			<div class='col-6' id="map_results_hidden"></div>
 			<div class='col' id="map_most_buttons">
-				<div class='row juseven'><div class='title'>Highlight</div><div>Jan 2020 v0.3 <img id='button_info' class='clickable' src='./images/info.png'></div></div>
+				<div class='row juseven'><div class='title'>Highlight</div><div>Mar 2020 v0.4 <img id='button_info' class='clickable' src='./images/info.png'></div></div>
 				<div class='row juseven'>
 					<button id='most_used' class='highlight_orange'>Popular</button>
 					<button id='most_largest' class='highlight_blue'>Large</button>
@@ -95,7 +95,7 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				  <div id="graphCarouselIndicators" class="carousel slide" data-interval="false">
+				  <div id="graphCarouselIndicators" class="carousel slide">
 					  <ol class="carousel-indicators">
 						<li data-target="#graphCarouselIndicators" data-slide-to="0" class="active"></li>
 						<li data-target="#graphCarouselIndicators" data-slide-to="1"></li>
@@ -117,7 +117,7 @@
 							<div class='pagenum'>2 of 4</div>
 						</div>
 						<div class="carousel-item">
-							<p>There were over 3000 newly listed entire-home Airbnbs in Edinburgh in 2019 (1/3 of which were available for the Fringe only), continuing the upward trend of the past 5 years. Demand for visitor accommodation has never been higher and continues to outstrip the supply of hotel rooms being built.</p>
+							<p>There were around 2000 newly listed entire-home Airbnbs in Edinburgh in 2019 (1/3 of which were available during the Fringe only), continuing the upward trend of the past 5 years. Demand for visitor accommodation has never been higher and continues to outstrip the supply of hotel rooms being built.</p>
 							<p>Losses of homes in the capital to Airbnb for tourism can be said to be removing a large chunk of the existing housing stock, thus damaging the government's target of building new housing to meet demand from the next generation of Scots families.</p>
 							<p><img class='fullwidth' src='./images/new_properties_yearonyear.png'/></p>
 							<p class='small'>Dashed lines indicate Airbnbs new in that year but excluding those that since ceased (no reviews in 2019)</p>
@@ -125,8 +125,9 @@
 							<div class='pagenum'>3 of 4</div>
 						</div>
 						<div class="carousel-item">
-							<p>Looking to the future, were entire-home STLs restricted totally, <b>5000 existing properties</b> could be freed for use by long-term residents or students. However it would create a massive shortfall of 15,000 beds for visitors, the peak in Summer, comparable to the entire 2019 capacity of hotels. Hotels of course have a massively higher guest-density achieving that number using <b>97% less properties</b>.</p>
-							<p>With hotel rooms consistently around 80% occupancy for 7 months in the year, urban space for building a dozen new hotels or student halls would have to be found just to meet current peak tourist demand. Far in excess of the estimated 8000 increase in hotel room capacity slated for 2030, with Edinburgh airport expecting 5 million more tourists annually by then. The pressure will be on the Council from both sides in the coming years to provide extra capacity for tourism while cracking down on these antisocial STL businesses.</p>
+							<p>Looking to the future, were entire-home AirBnBs restricted absolutely, <b>5000 existing properties</b> could be freed for use by long-term residents or students. However it would create a massive shortfall of 15,000 beds for visitors, the peak in Summer, comparable to the entire 2019 capacity of hotels. Hotels of course have a massively higher guest-density achieving that number using <b>97% less properties</b>.</p>
+							<p>Remember AirBnB is not the sole competitor in this market, and the data here does not indicate additional STL properties that are solely listed on homeaway,booking.com,flipkey,vrbo,homestay etc.</p>
+							<p>With hotel rooms consistently around 80% occupancy for 7 months in the year, urban space for building a dozen new hotels or dedicate student halls to visitors in summer, just to meet current tourist demand. Far in excess of the estimated 8000 bed increase in hotel room capacity slated for 2030, with Edinburgh airport expecting 5 million more tourists annually by then. The pressure will be on the Council from both sides in the coming years to provide extra capacity for tourism while cracking down on these antisocial STL businesses.</p>
 							<p><img class='fullwidth' src='./images/visitor_accomodation.png'/></p>
 							<p><ul class='refs'><li><a href='http://insideairbnb.com/edinburgh/' target='_blank'>[1]insideAirBnB</a></li><li><a href='https://www.gov.scot/publications/housing-statistics-for-scotland-new-house-building/' target='_blank'>[2]Housing statistics quarterly Mar 2020</a></li><li><a href='https://www.edinburgh.gov.uk/downloads/file/26143/visitor-accommodation' target='_blank'>[3]GVA/Ryden Hotels report 2019</a></li><li><a href='https://www.bbc.co.uk/news/uk-scotland-scotland-business-51663643' target='_blank'>[4]Colliers Intl Hotel report</a></li><li><a href='https://www.edinburgh.gov.uk/downloads/file/26322/hotel-development-schedule-2018' target='_blank'>[5]City of Edinburgh Hotel Development Schedule 2018</a></li><li><a href='https://rupparti.wordpress.com/2018/03/11/edinburgh-student-accommodation-sources/' target='_blank'>[6]Student accommodation figures</a></li></ul></p>
 							<div class='pagenum'>4 of 4</div>
@@ -158,14 +159,14 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				  <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+				  <div id="carouselExampleIndicators" class="carousel slide">
 					  <ol class="carousel-indicators">
 						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 					  </ol>
 					  <div class="carousel-inner">
 						<div class="carousel-item active">
-							<p>This website allows you to visualise and help identify the Airbnb lets near your home. <a href='#' id='ddisc'>Data sourced</a> from <a href='http://insideAirbnb.com/edinburgh/' target='_blank'>insideAirbnb.com</a> (Jan 2020)</p>
+							<p>This website allows you to visualise and help identify the Airbnb lets near your home. <a href='#' id='ddisc'>Data sourced</a> from <a href='http://insideAirbnb.com/edinburgh/' target='_blank'>insideAirbnb.com</a> (Mar 2020)</p>
 							
 							<div class='disclaimer hidden'>
 								<p>*The data is incomplete but can still give an accurate picture of short-term let proliferation. Airbnb make it difficult to identify the location and nature of homes they list for both user privacy and covertness. Exact locations are accurate to 300m. Prices have been averaged over the year, as they vary widely due to demand, date, availability, obscurities (eg. hosts postponing renting by setting high prices). Available days are subject to change as hosts update calendars frequently and can be removed or added after the dataset snapshot was taken. Days available in previous months but no longer could have been booked by guests, the date past unoccupied or simply been removed. Past reviews per month therefore seems the most useful occupancy metric, despite some guests not leaving reviews, but may seem skewed for hosts who only offer rent during Summer months.</p>
